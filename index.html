@@ -4,58 +4,310 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacidade - Profissão Pet 3.0</title>
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 850px; margin: 0 auto; padding: 40px 20px; background-color: #f9f9f9; }
-        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 30px; }
-        p, li { font-size: 1.1em; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; text-align: center; }
-        .highlight { background-color: #e8f4fd; padding: 15px; border-left: 5px solid #3498db; }
+        :root {
+            --azul-noturno: #060640;
+            --rosa-gradiente: linear-gradient(135deg, #F9A8D4 0%, #FCA5A5 100%);
+            --branco-gelo: #F8FAFC;
+            --cinza-texto: #475569;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--azul-noturno);
+            color: var(--cinza-texto);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        /* Background Pattern with Logo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Logo.png');
+            background-size: 150px;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            background: white;
+            max-width: 900px;
+            width: 100%;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            color: var(--azul-noturno);
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--rosa-gradiente);
+            border-radius: 2px;
+        }
+
+        h2 {
+            color: var(--azul-noturno);
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 i {
+            margin-right: 12px;
+            color: #F9A8D4; /* Cor inicial do gradiente */
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul li::before {
+            content: "\f1b0"; /* paw icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: #F9A8D4;
+        }
+
+        .highlight-box {
+            background-color: var(--branco-gelo);
+            padding: 25px;
+            border-left: 5px solid #F9A8D4; /* Fallback for border-image */
+            border-image: var(--rosa-gradiente);
+            border-image-slice: 1;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        footer {
+            background-color: var(--azul-noturno);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 4px solid #F9A8D4; /* Toque do gradiente */
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #CBD5E1;
+            text-align: center;
+        }
+
+        .footer-content strong {
+            color: white;
+        }
+
+        /* Botão WhatsApp Flutuante */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 0;
+            }
+            
+            main {
+                padding: 0;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 30px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Política de Privacidade - Profissão Pet 3.0</h1>
-        <p>Esta Política de Privacidade descreve como o projeto <strong>Profissão Pet 3.0</strong>, gerido pelo <strong>Instituto Impacto Criativo</strong>, coleta, utiliza e protege as informações dos usuários através da nossa integração com a API do WhatsApp Business.</p>
+    <header>
+        <div class="header-container">
+            <img src="Logo.png" alt="Logo Profissão Pet" class="logo">
+        </div>
+    </header>
 
-        <h2>1. Dados Coletados</h2>
-        <p>Coletamos apenas as informações necessárias para a sua jornada educacional e suporte técnico:</p>
-        <ul>
-            <li><strong>Número de Telefone:</strong> Identificação única para envio de notificações e acesso ao menu de serviços.</li>
-            <li><strong>Nome de Perfil:</strong> Utilizado para personalização do atendimento via bot.</li>
-            <li><strong>Dados de Progresso:</strong> Pontuação e status de atividades integradas à plataforma Circle.so.</li>
-        </ul>
+    <main>
+        <div class="container">
+            <h1>Política de Privacidade - Profissão Pet 3.0</h1>
+            <p>Esta política detalha como o projeto <strong>Profissão Pet 3.0</strong>, gerido pelo <strong>Instituto Impacto Criativo</strong>, trata as suas informações. Atuamos com transparência e foco na segurança dos dados dos nossos alunos e utilizadores.</p>
 
-        <h2>2. Finalidade do Processamento</h2>
-        <p>Seus dados são utilizados exclusivamente para:</p>
-        <ul>
-            <li>Fornecer suporte técnico e pedagógico.</li>
-            <li>Automatizar o envio de informações sobre o curso (pontuação, mentorias e eventos).</li>
-            <li>Melhorar a experiência de aprendizado através do nosso Oráculo (IA).</li>
-        </ul>
-
-        <h2>3. Compartilhamento de Dados</h2>
-        <p>Não vendemos seus dados. Eles são compartilhados apenas com os serviços essenciais para o funcionamento do bot: <strong>Meta</strong> (WhatsApp Cloud API) e <strong>Circle.so</strong> (Gestão de Comunidade).</p>
-
-        <div class="highlight">
-            <h2>4. Instruções para Exclusão de Dados (Data Deletion)</h2>
-            <p>Respeitamos seu direito à privacidade e ao esquecimento. Para solicitar a exclusão total de seus dados de nossa base de automação, você pode escolher um dos caminhos abaixo:</p>
+            <h2><i class="fas fa-database"></i> 1. Coleta Mínima de Dados</h2>
+            <p>Seguimos o princípio da minimização, solicitando apenas o que é essencial para o funcionamento dos nossos serviços automatizados via WhatsApp:</p>
             <ul>
-                <li><strong>Via E-mail:</strong> Envie uma solicitação para <strong>profissaopet@j3lab.com.br</strong> com o assunto "Exclusão de Dados WhatsApp".</li>
-                <li><strong>Via WhatsApp:</strong> Envie a mensagem "SAIR" ou solicite diretamente ao suporte humano no menu do bot.</li>
+                <li><strong>Número de Telefone e Nome de Perfil:</strong> Recebidos automaticamente através da API do WhatsApp para identificar o utilizador e permitir a interação com o bot.</li>
+                <li><strong>CPF (Uso Futuro):</strong> Poderá ser solicitado exclusivamente para a <strong>emissão de certificados oficiais</strong> e validação de matrículas. Este dado será armazenado de forma segura e utilizado apenas para fins administrativos e pedagógicos.</li>
             </ul>
-            <p>Processaremos sua solicitação em até 48 horas úteis, removendo todos os seus registros de nossos logs e cache de serviço.</p>
-        </div>
 
-        <h2>5. Segurança</h2>
-        <p>Implementamos medidas técnicas para proteger seus dados contra acessos não autorizados e garantir a integridade das informações trafegadas entre o WhatsApp e nossos servidores de automação.</p>
+            <h2><i class="fas fa-sync-alt"></i> 2. Consultas em Plataformas Externas</h2>
+            <div class="highlight-box">
+                <p>É importante destacar que o nosso sistema de WhatsApp funciona como uma <strong>ponte de consulta em tempo real</strong>. Não duplicamos desnecessariamente os seus dados. Realizamos buscas automatizadas em plataformas parceiras, como o <strong>Circle.so</strong>, para exibir:</p>
+                <ul>
+                    <li>O seu progresso nas trilhas de aprendizagem (Banhista, Dog Walker e Pet Sitter).</li>
+                    <li>A sua pontuação atualizada e status de participação em eventos.</li>
+                </ul>
+            </div>
 
-        <div class="footer">
-            <p>Última atualização: 13 de abril de 2026<br>
-            <strong>Instituto Impacto Criativo / Profissão Pet 3.0</strong><br>
-            Rio de Janeiro, Brasil.</p>
+            <h2><i class="fas fa-bullseye"></i> 3. Finalidade e Processamento</h2>
+            <p>Os dados processados destinam-se a:</p>
+            <ul>
+                <li>Personalizar o atendimento e fornecer suporte técnico eficiente.</li>
+                <li>Sincronizar o progresso educativo entre a comunidade e o bot.</li>
+                <li>Alimentar o "Oráculo" (nossa ferramenta de IA baseada em Gemini) para fornecer conselhos técnicos precisos para o mercado pet.</li>
+            </ul>
+
+            <h2><i class="fas fa-user-shield"></i> 4. Direitos do Utilizador e Exclusão</h2>
+            <p>Pode solicitar a remoção dos seus dados de identificação da nossa base de automação a qualquer momento:</p>
+            <ul>
+                <li><strong>E-mail:</strong> Envie um pedido para <strong>juan.jorge.gomes@gmail.com</strong>.</li>
+                <li><strong>Comando Direto:</strong> Envie a mensagem "SAIR" no chat para interromper as notificações automáticas.</li>
+            </ul>
+
+            <h2><i class="fas fa-lock"></i> 5. Segurança e Integridade</h2>
+            <p>As comunicações entre o WhatsApp e os nossos servidores são protegidas por protocolos de segurança de ponta, garantindo que as consultas ao seu progresso educativo permaneçam privadas e seguras.</p>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Última atualização: 13 de abril de 2026</p>
+            <p><strong>Instituto Impacto Criativo | Profissão Pet 3.0</strong></p>
+            <p>Rio de Janeiro, Brasil.</p>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5521999999999" class="whatsapp-btn" target="_blank" title="Dúvidas? Fale conosco">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
 </html>
